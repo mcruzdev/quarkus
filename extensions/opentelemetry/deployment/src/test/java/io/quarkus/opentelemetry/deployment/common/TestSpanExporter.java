@@ -1,5 +1,6 @@
 package io.quarkus.opentelemetry.deployment.common;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toList;
 import static org.awaitility.Awaitility.await;
@@ -51,7 +52,7 @@ public class TestSpanExporter implements SpanExporter {
     }
 
     public void assertSpanCount(int spanCount) {
-        await().atMost(30, SECONDS).untilAsserted(() -> assertEquals(spanCount, finishedSpanItems.size()));
+        await().atMost(30000, MILLISECONDS).untilAsserted(() -> assertEquals(spanCount, finishedSpanItems.size()));
     }
 
     public void reset() {
