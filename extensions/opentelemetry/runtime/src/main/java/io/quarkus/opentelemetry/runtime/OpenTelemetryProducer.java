@@ -151,7 +151,7 @@ public class OpenTelemetryProducer {
         for (String propertyName : config.getPropertyNames()) {
             if (propertyName.startsWith("quarkus.otel.")) {
                 ConfigValue configValue = config.getConfigValue(propertyName);
-                if (configValue.getValue() != null || configValue.getValue().isBlank()) {
+                if (configValue.getValue() != null && !configValue.getValue().isBlank()) {
                     NameIterator name = new NameIterator(propertyName);
                     name.next();
                     String propertyValue = OpenTelemetryUtil.normalizeProperty(propertyName, configValue.getValue());
