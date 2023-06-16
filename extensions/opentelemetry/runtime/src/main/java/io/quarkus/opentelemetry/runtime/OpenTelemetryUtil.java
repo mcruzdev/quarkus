@@ -26,8 +26,8 @@ public final class OpenTelemetryUtil {
 
     static String normalizeDuration(String propertyValue) {
         Duration duration = DurationConverter.parseDuration(propertyValue);
-        return Long.toString(duration.toMillis()).concat("ms");
-    };
+        return Long.toString(Objects.requireNonNull(duration).toMillis()).concat("ms");
+    }
 
     private OpenTelemetryUtil() {
     }
