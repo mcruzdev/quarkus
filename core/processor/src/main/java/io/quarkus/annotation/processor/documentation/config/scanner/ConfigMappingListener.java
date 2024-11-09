@@ -59,7 +59,6 @@ public class ConfigMappingListener extends AbstractConfigListener {
             }
             if (annotationName.equals(Types.ANNOTATION_CONFIG_DOC_FILE_NAME)) {
                 configDocFileNameAnnotation = annotationMirror;
-                continue;
             }
         }
 
@@ -74,6 +73,9 @@ public class ConfigMappingListener extends AbstractConfigListener {
                 configPhase = ConfigPhase.valueOf(entry.getValue().getValue().toString());
             }
         }
+
+        validateRuntimeConfigOnDeploymentModules(
+                configPhase);
 
         for (Map.Entry<? extends ExecutableElement, ? extends AnnotationValue> entry : configMappingAnnotion.getElementValues()
                 .entrySet()) {
