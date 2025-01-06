@@ -700,7 +700,7 @@ public class GrpcServerProcessor {
         }
 
         if (!bindables.isEmpty()
-                || (LaunchMode.current() == LaunchMode.DEVELOPMENT && buildTimeConfig.devMode().forceServerStart)) {
+                || (LaunchMode.current() == LaunchMode.DEVELOPMENT && buildTimeConfig.devMode().forceServerStart())) {
             //Uses mainrouter when the 'quarkus.http.root-path' is not '/'
             recorder.initializeGrpcServer(vertx.getVertx(),
                     routerBuildItem.getMainRouter() != null ? routerBuildItem.getMainRouter() : routerBuildItem.getHttpRouter(),

@@ -1,6 +1,5 @@
 package io.quarkus.grpc.deployment;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
 import io.smallrye.config.WithDefault;
 
 public interface GrpcDevModeConfig {
