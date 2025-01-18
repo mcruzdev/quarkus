@@ -110,7 +110,7 @@ public class GrpcServerRecorder {
         }
 
         Vertx vertx = vertxSupplier.getValue();
-        GrpcServerConfiguration configuration = cfg.server;
+        GrpcServerConfiguration configuration = cfg.server();
         GrpcBuilderProvider<?> provider = GrpcBuilderProvider.findServerBuilderProvider(configuration);
 
         if (configuration.useSeparateServer) {
