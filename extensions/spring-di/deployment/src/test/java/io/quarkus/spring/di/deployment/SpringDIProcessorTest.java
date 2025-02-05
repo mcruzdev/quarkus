@@ -48,7 +48,7 @@ class SpringDIProcessorTest {
     final IndexView index = getIndex(PrototypeService.class, RequestService.class, UndeclaredService.class,
             ConflictService.class, ConflictBean.class, RequestBean.class, UndeclaredBean.class,
             ConflictStereotypeBean.class, NamedBean.class, OverrideConflictStereotypeBean.class,
-            ConflictNamedBean.class);
+            ConflictNamedBean.class, ConfigurationWithNamedBean.class);
 
     @Test
     public void springStereotypeScopes() {
@@ -275,6 +275,15 @@ class SpringDIProcessorTest {
     @ConflictService
     @Scope("application")
     public class OverrideConflictStereotypeBean {
+    }
+
+    @Configuration
+    public class ConfigurationWithNamedBean {
+
+        @Bean(name = "mySpecialName")
+        public String foo() {
+            return "foo";
+        }
     }
 
     @Configuration
